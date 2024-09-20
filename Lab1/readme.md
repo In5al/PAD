@@ -1,4 +1,4 @@
-# Durak.md
+e# Durak.md
 ## Application Suitability
 ### Why is this application relevant?
 <p>Durak.md is a multiplayer card game that allows players to join a lobby, play games in real time, and keep track of their performance. A lobby system helps manage game sessions, allowing players to join, create, or leave games seamlessly. The application will offer real-time gameplay, messaging, and a score tracking feature.<p>
@@ -168,3 +168,75 @@ Endpoint: `/api/game/move`
        }
        ```
     
+    
+    ## User Service
+
+Endpoint: `/api/users/auth/signup`
+   - **Method**:  POST
+   - **Data Received**:
+```json
+{
+  "username": "string",
+  "email": "string",
+  "password": "string"
+}
+```
+- **Responses**:
+  - **201**:
+    ```json
+       {
+           "msg": "User successfully created."
+       }
+       ```
+  - **400**:
+    ```json
+       {
+           "msg": "Invalid data."
+       }
+       ```
+
+Endpoint: `/api/users/auth/signin`
+   - **Method**:  POST
+   - **Data Received**:
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+- **Responses**:
+  - **200**:
+    ```json
+       {
+           "msg": "JWT token returned."
+       }
+       ```
+  - **401**:
+    ```json
+       {
+           "msg": "Invalid credentials."
+       }
+       ```
+     ## Score Tracking Service
+
+Endpoint: `/api/score/user/<user_id>`
+   - **Method**:  GET
+   - **Responses**:
+     - **200**:
+      ```json
+         {
+             "msg": " Returns user score"
+         }
+       ```
+     - **404**:
+      ```json
+         {
+             "msg": "User not found."
+         }
+       ```
+## Deployment and Scaling
+
+- Containerization: All services will be containerized using Docker.
+- Orchestration: Kubernetes will be used for scaling the Lobby and Game Engine services, ensuring that additional instances can be added during peak times.
+- Load Balancing: NGINX will be used for load balancing between microservices.
+      
