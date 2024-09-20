@@ -1,4 +1,4 @@
-e# Durak.md
+# Durak.md
 ## Application Suitability
 ### Why is this application relevant?
 <p>Durak.md is a multiplayer card game that allows players to join a lobby, play games in real time, and keep track of their performance. A lobby system helps manage game sessions, allowing players to join, create, or leave games seamlessly. The application will offer real-time gameplay, messaging, and a score tracking feature.<p>
@@ -234,7 +234,7 @@ Endpoint: `/api/score/user/<user_id>`
              "msg": "User not found."
          }
        ```
-## Deployment and Scaling
+      ## Deployment and Scaling
 
 - Containerization: All services will be containerized using Docker.
 - Orchestration: Kubernetes will be used for scaling the Lobby and Game Engine services, ensuring that additional instances can be added during peak times.
