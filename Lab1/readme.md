@@ -2,10 +2,10 @@
 ## Application Suitability
 ### Why is this application relevant?
 <p>Durak.md is a multiplayer card game that allows players to join a lobby, play games in real time, and keep track of their performance. A lobby system helps manage game sessions, allowing players to join, create, or leave games seamlessly. The application will offer real-time gameplay, messaging, and a score tracking feature.<p>
-<p>This project is relevant because it addresses the complexities of real-time multiplayer games, where multiple users need to interact simultaneously without significant delays. Microservices provide a scalable and fault-tolerant way to manage various game components like lobbies, user authentication, game logic, and score tracking.</p>
+<p>The real-time nature of the game, combined with multiple simultaneous user interactions and different game states, makes Durak.md an ideal candidate for microservices. Microservices provide a scalable and fault-tolerant way to manage various game components like lobbies, user authentication, game logic, and score tracking.</p>
 
 ### Why does this application require a microservice architecture?
-<p>A game like Durak.md has several independent components that are best managed as microservices:<p>
+<p>"Similar to how Facebook uses microservices for its complex, multi-faceted platform,  Durak.md has several independent components that are best managed as microservices:<p>
   
 - Lobby management for real-time communication using WebSockets.
 - Game engine for handling the game logic, turns, and game states.
@@ -19,11 +19,40 @@
 
 ### Architecture
 
-- Lobby Service - Handles WebSocket-based real-time communication for game lobbies, allowing players to join, leave, and chat in game rooms
-- Game Engine Service - Manages the core game logic, including card dealing, turns, and gameplay rules.
-- User Service - Manages user authentication, profiles, and session tracking.
-- Score Tracking Service - Stores and retrieves player scores, ranks, and past game data.
-- Notification Service - Sends notifications for game invites, moves, and real-time updates using WebSockets
+- Lobby Service
+  - Functionality -Manages game lobbies
+  - Responsabilities:
+      - Real-time communication via WebSockets
+      - Player join/leave management
+      - Chat functionality
+
+- Game Engine Service
+  - Functionality -Handles core game logic
+  - Responsabilities:
+      - Card dealing
+      - Turn management
+      - Game state tracking
+        
+- User Service
+  - Functionality -Handles core game logic
+  - Responsabilities:
+      - Card dealing
+      - Turn management
+      - Game state tracking
+
+- Score Tracking Service
+  - Functionality -Handles player performance data
+  - Responsabilities:
+      - Store and retrieve scores
+      - Manage player rankings
+      - Track game history
+        
+- Notification Service
+  - Functionality -Manages in-game notifications
+  - Responsabilities:
+      - Send game invites
+      - Update players on moves
+      - Deliver real-time game updates
 
 ## Technology Stack and Communication Patterns
 
@@ -236,7 +265,7 @@ Endpoint: `/api/score/user/<user_id>`
        ```
       ## Deployment and Scaling
 
-- Containerization: All services will be containerized using Docker.
-- Orchestration: Kubernetes will be used for scaling the Lobby and Game Engine services, ensuring that additional instances can be added during peak times.
-- Load Balancing: NGINX will be used for load balancing between microservices.
+- Containerization: All services will be containerized using Docker, ensuring consistency across development and production environments.
+- Orchestration: Kubernetes will be used for orchestrating and scaling the services, particularly the Lobby and Game Engine services. This allows for efficient resource allocation during peak gaming hours.
+- Load Balancing: NGINX will serve as the ingress controller, providing load balancing between microservices and handling SSL termination.
       
