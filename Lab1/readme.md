@@ -19,33 +19,32 @@
 
 ### Architecture
 
-- Lobby Service
-  - Functionality -Manages game lobbies
+- API Gateway 
+  - Functionality -Central entry point for client requests
   - Responsabilities:
-      - Real-time communication via WebSockets
-      - Player join/leave management
-      - Chat functionality
+      - Central entry point for client requests
+      - Handle authentication and authorization
+      - Load balancing
 
-- Game Engine Service
-  - Functionality -Handles core game logic
+- Service Discovery
+  - Functionality - Manages service registration and discovery
   - Responsabilities:
-      - Card dealing
-      - Turn management
-      - Game state tracking
+      - Keep track of available services and their locations
+      - Assist in load balancing and fault tolerance
         
-- User Service
+- User & Score Service
+  - Functionality -Manages user data and game scores
+  - Responsabilities:
+      - User authentication and profile management
+      - Store and retrieve user scores
+      - Manage player rankings
+
+- Game Service
   - Functionality -Handles core game logic
   - Responsabilities:
-      - Card dealing
+      - Game state management
       - Turn management
-      - Game state tracking
-
-- Score Tracking Service
-  - Functionality -Handles player performance data
-  - Responsabilities:
-      - Store and retrieve scores
-      - Manage player rankings
-      - Track game history
+      - Game rules implementation
         
 - Notification Service
   - Functionality -Manages in-game notifications
@@ -56,27 +55,45 @@
 
 ## Technology Stack and Communication Patterns
 
-### Lobby Service: 
-- Backend: Python with Flask for HTTP APIs and WebSockets for real-time communication.
-- Database: Redis for in-memory data storage (e.g., lobby details).
-- Communication: WebSocket for real-time updates; REST for non-time-sensitive data.
-  
-### Game Engine Service:
-- Backend: Python with Flask, handling game logic and rules.
-- Database: MongoDB for storing game states.
-- Communication: REST API for communication with the Lobby Service.
+### API Gateway:
+- Technology: Not specified, but likely a lightweight solution like Nginx or a cloud-native option
+- Communication:
+  - Receives HTTP requests from clients
+  - Communicates via HTTP with other services
+ 
 
-### User Service:
+### Service Discovery:
+-  Not specified, but could be something like Consul or etcd
+- Communication: 
+  -HTTP communication with API Gateway and other services
+
+### User & Score Service:
 - Backend: Python (Flask).
-- Database: PostgreSQL for user data.
-- Authentication: JWT for secure session management.
+- Database: PostgreSQL for persistent data storage
+- Communication:
+    - HTTP for requests from API Gateway
+    - gRPC for inter-service communication with Game Service
 
-### Score Tracking Service:
-- Backend: Python (Flask).
-- Database: Redis for real-time score tracking.
-- Communication: REST API to query and update user scores.
+### Game Service:
+- Backend: Not specified, but should be optimized for real-time operations
+- Databases:
+    - Redis for caching and real-time data
+    - MongoDB for game state persistence
+- Communication:
+    - HTTP for requests from API Gateway
+    - gRPC for communication with User & Score Service
+    - WebSocket for real-time communication with clients (through API Gateway)
+ 
+ ### Databases:
+   - PostgreSQL: Used by User & Score Service for structured data
+   - Redis: Used by Game Service for caching and real-time operations
+   - MongoDB: Used by Game Service for flexible game state storage
 
-## Data Management
+### Client-Server Communication:
+   - HTTP: For standard REST API calls through the API Gateway
+   - WebSocket: For real-time game updates, directly connecting clients to the Game Service
+
+
 
 ### Lobby Service
 Endpoint: `/api/lobby/join`
