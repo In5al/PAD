@@ -15,7 +15,7 @@
 <p>By using microservices, each service can be developed, deployed, and scaled independently. For example, the Lobby service can be scaled separately if many users are waiting to join games, without impacting the game engine or user services. This also ensures fault tolerance—if the Game Engine service fails, it won’t crash the Lobby or User Management services.<p>
 
 ## Service Boundaries
-![Use Case](https://github.com/In5al/PAD/blob/main/Lab1/padc.jpg)
+![Use Case](https://github.com/In5al/PAD/blob/main/Lab1/pad_diagram.jpg)
 
 ### Architecture
 
