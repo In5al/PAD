@@ -101,8 +101,11 @@ Endpoint: `/api/lobby/join`
    - **Data Received**:
 ```json
 {
-  "user_id": "string",
-  "lobby_id": "string"
+  "action": "join_lobby",
+  "data": {
+    "user_id": "string",
+    "lobby_id": "string"
+  }
 }
 ```
 - **Responses**:
@@ -147,8 +150,11 @@ Endpoint: `/api/lobby/leave`
    - **Data Received**:
 ```json
 {
-  "user_id": "string",
-  "lobby_id": "string"
+  "action": "leave_lobby",
+  "data": {
+    "user_id": "string",
+    "lobby_id": "string"
+  }
 }
 ```
 - **Responses**:
