@@ -93,7 +93,7 @@
    - HTTP: For standard REST API calls through the API Gateway
    - WebSocket: For real-time game updates, directly connecting clients to the Game Service
 
-
+## Data Management 
 
 ### Lobby Service
 Endpoint: `/api/lobby/join`
