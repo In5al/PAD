@@ -96,9 +96,8 @@
 ## Data Management 
 
 ### Lobby Service
-Endpoint: `/api/lobby/join`
-   - **Method**:  WebSocket
-   - **Data Received**:
+Endpoint: `/ws/lobby/join`
+   - WebSocket Message
 ```json
 {
   "action": "join_lobby",
@@ -108,19 +107,7 @@ Endpoint: `/api/lobby/join`
   }
 }
 ```
-- **Responses**:
-  - **200**:
-    ```json
-       {
-           "msg": "Joined lobby successfully."
-       }
-       ```
-  - **404**:
-    ```json
-       {
-           "msg": "Lobby not found."
-       }
-       ```
+
 
 Endpoint: `/api/lobby/create`
    - **Method**:  POST
@@ -145,9 +132,8 @@ Endpoint: `/api/lobby/create`
        }
        ```
 
-Endpoint: `/api/lobby/leave`
-   - **Method**:  WebSocket
-   - **Data Received**:
+Endpoint: `/ws/lobby/leave`
+   - WebSocket Message
 ```json
 {
   "action": "leave_lobby",
@@ -157,20 +143,8 @@ Endpoint: `/api/lobby/leave`
   }
 }
 ```
-- **Responses**:
-  - **200**:
-    ```json
-       {
-           "msg": "Left lobby successfully."
-       }
-       ```
-  - **404**:
-    ```json
-       {
-           "msg": "Lobby not found."
-       }
-       ```
-    ## Game Engine Service
+
+ ## Game Engine Service
 
 Endpoint: `/api/game/start`
    - **Method**:  POST
