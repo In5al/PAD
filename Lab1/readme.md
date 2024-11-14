@@ -266,3 +266,11 @@ Endpoint: `/api/score/user/<user_id>`
 - Orchestration: Kubernetes will be used for orchestrating and scaling the services, particularly the Lobby and Game Engine services. This allows for efficient resource allocation during peak gaming hours.
 - Load Balancing: NGINX will serve as the ingress controller, providing load balancing between microservices and handling SSL termination.
       
+## Service Boundries(Lab2)
+my plan to expand the system
+![image](https://github.com/user-attachments/assets/5a21c083-f7d7-4115-9c64-7f9fa525aa4a)
+1. Implement read replication for user data by setting up two dedicated read replicas to distribute and balance query load.
+2. Use a Two-Phase Commit (2PC) to ensure safe and atomic deletion of user data, removing all associated records and deregistering the user from any lobbies they participated in.
+3. Integrate a data warehouse to enable User data analysis like thier rank, preformance ,log time and different player metrics.
+4. Deploy the ELK stack to centralize and process logs across all system instances, enhancing monitoring and troubleshooting capabilities.
+5. Deploy a Redis cluster to enable sharded caching of Session data using consistent hashing.
