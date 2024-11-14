@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "a1a57605-d71d-4fb4-8c24-254cceebfc26",
+		"name": "Lobby Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39632661"
+	},
+	"item": [
+		{
+			"name": "api create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": \"string\",\r\n  \"game_type\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/lobby/create",
+					"path": [
+						"api",
+						"lobby",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api start",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lobby_id\": \"string\",\r\n  \"players\": [\"string\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/game/start",
+					"path": [
+						"api",
+						"game",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api move",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"game_id\": \"string\",\r\n  \"player_id\": \"string\",\r\n  \"move\": \"object\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/game/move",
+					"path": [
+						"api",
+						"game",
+						"move"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
